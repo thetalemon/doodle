@@ -3,9 +3,10 @@ import { Image } from 'astro:assets'
 
 interface Props {
   list: Record<string, any>[]
+  title: string
 }
 
-const { list } = Astro.props
+const { list, title } = Astro.props
 
 const ITEM_BOX_SIZE = 280
 
@@ -42,14 +43,14 @@ const mappedImages = list
     } as ImageMetadata
   })
   .reverse()
-console.log(mappedImages)
 ---
 
+<h2>{title}</h2>
 <ul>
   {
     mappedImages.map((image) => (
       <li>
-        <Image src={image} alt='らくがき' />
+        <Image src={image} alt='らくがき' class='js-content' />
       </li>
     ))
   }

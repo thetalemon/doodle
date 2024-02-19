@@ -1,6 +1,9 @@
 ---
 import Layout from '../layouts/Layout.astro'
 import ImageList from '../components/ImageList.astro'
+import Link from '../components/Link.astro'
+import { Image } from 'astro:assets'
+import headerImage from '../images/header.png'
 
 const azarashi = await Astro.glob('/src/images/azarashi/*')
 const other = await Astro.glob('/src/images/other/*')
@@ -8,11 +11,10 @@ const other = await Astro.glob('/src/images/other/*')
 
 <script>
   // 画像をクリックすると拡大するようにする
-  const images = document.querySelectorAll('img')
+  const images = document.querySelectorAll('.js-content')
   images.forEach((image) => {
     image.addEventListener('click', () => {
       const src = image.getAttribute('src') as string
-      // div要素を作成して画像を表示する
       const div = document.createElement('div')
       div.style.position = 'fixed'
       div.style.top = '0'
@@ -45,22 +47,59 @@ const other = await Astro.glob('/src/images/other/*')
   })
 </script>
 
-<Layout title='Welcome to Astro.'>
+<Layout title='北極の らくがき倉庫'>
   <main>
-    らくがき倉庫なんよ
-    <ImageList list={azarashi} />
-    <ImageList list={other} />
+    <header>
+      <h1>
+        <Image
+          src={headerImage}
+          alt='北極の らくがき倉庫'
+          class='headerImage'
+        />
+      </h1>
+    </header>
+    <div class='buttonArea'>
+      <Link href='https://manasas.dev/' text='本館' />
+      <Link href='https://novel.manasas.dev/' text='小説館' />
+    </div>
+
+    <ImageList list={azarashi} title='あざらし' />
+    <ImageList list={other} title='その他' />
   </main>
 </Layout>
 
-<style>
+<style lang='scss'>
   main {
     margin: auto;
-    padding: 1rem;
+    padding: 0 1rem;
     width: 900px;
     max-width: calc(100% - 2rem);
     color: white;
     font-size: 20px;
     line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: #0f0f0e;
+  }
+
+  header {
+    display: flex;
+    justify-content: center;
+    h1 {
+      margin: 0;
+      width: fit-content;
+      image {
+        margin: 0 auto;
+        margin-bottom: 16px;
+      }
+    }
+  }
+
+  .buttonArea {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding: 16px 0;
   }
 </style>

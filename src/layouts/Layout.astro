@@ -7,10 +7,10 @@ const { title } = Astro.props
 ---
 
 <!doctype html>
-<html lang='en'>
+<html lang='ja'>
   <head>
     <meta charset='UTF-8' />
-    <meta name='description' content='Astro description' />
+    <meta name='description' content='まなさすのらくがき倉庫' />
     <meta name='viewport' content='width=device-width' />
     <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
     <meta name='generator' content={Astro.generator} />
@@ -34,9 +34,12 @@ const { title } = Astro.props
   }
   html {
     font-family: system-ui, sans-serif;
-    background: #13151a;
+    background: #41413f;
     background-size: 224px;
     caret-color: transparent;
+  }
+  body {
+    margin: 0;
   }
   body::-webkit-scrollbar {
     display: none;
@@ -51,6 +54,9 @@ const { title } = Astro.props
       Bitstream Vera Sans Mono,
       Courier New,
       monospace;
+  }
+  h2 {
+    margin: 24px 0 0 0;
   }
   ul {
     list-style: none;
