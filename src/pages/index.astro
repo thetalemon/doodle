@@ -4,9 +4,11 @@ import ImageList from '../components/ImageList.astro'
 import Link from '../components/Link.astro'
 import { Image } from 'astro:assets'
 import headerImage from '../images/header.png'
+import { azarashiList } from '../images/azarashi/list.ts'
+import { otherList } from '../images/other/list.ts'
 
-const azarashi = await Astro.glob('/src/images/azarashi/*')
-const other = await Astro.glob('/src/images/other/*')
+const azarashi = azarashiList
+const other = otherList
 ---
 
 <script>

@@ -1,8 +1,9 @@
 ---
 import { Image } from 'astro:assets'
+import type { ImageListItem } from '../type/images'
 
 interface Props {
-  list: Record<string, any>[]
+  list: ImageListItem[]
   title: string
 }
 
@@ -10,9 +11,9 @@ const { list, title } = Astro.props
 
 const ITEM_BOX_SIZE = 280
 
-const calcWidthAndHeight = (image: Record<string, any>) => {
-  const width = Number(image.default.width)
-  const height = Number(image.default.height)
+const calcWidthAndHeight = (image: ImageMetadata) => {
+  const width = Number(image.width)
+  const height = Number(image.height)
   if (width > height) {
     const ratio = ITEM_BOX_SIZE / width
     const calcedWidth = width > ITEM_BOX_SIZE ? ITEM_BOX_SIZE : width
@@ -32,15 +33,19 @@ const calcWidthAndHeight = (image: Record<string, any>) => {
   }
 }
 
-const mappedImages = list
-  .map((image) => {
-    const wh = calcWidthAndHeight(image)
+const mappedItems = list
+  .map((item) => {
+    const wh = calcWidthAndHeight(item.image)
+
     return {
-      src: image.default.src,
-      width: wh.width,
-      height: wh.height,
-      format: image.default.format,
-    } as ImageMetadata
+      image: {
+        src: item.image.src,
+        width: wh.width,
+        height: wh.height,
+        format: item.image.format,
+      } as ImageMetadata,
+      alt: item.alt,
+    }
   })
   .reverse()
 ---
@@ -48,9 +53,9 @@ const mappedImages = list
 <h2>{title}</h2>
 <ul>
   {
-    mappedImages.map((image) => (
+    mappedItems.map((item) => (
       <li>
-        <Image src={image} alt='らくがき' class='js-content' />
+        <Image src={item.image} alt={item.alt} class='js-content' />
       </li>
     ))
   }
