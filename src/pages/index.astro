@@ -5,11 +5,31 @@ import Link from '../components/Link.astro'
 import { Image } from 'astro:assets'
 import headerImage from '../images/header.png'
 import { azarashiList } from '../images/azarashi/list.ts'
+import { fediverseList } from '../images/fedi/list.ts'
 import { otherList } from '../images/other/list.ts'
-
-const azarashi = azarashiList
-const other = otherList
 ---
+
+<Layout title='北極の らくがき倉庫'>
+  <main>
+    <header>
+      <h1>
+        <Image
+          src={headerImage}
+          alt='北極の らくがき倉庫'
+          class='headerImage'
+        />
+      </h1>
+    </header>
+    <div class='buttonArea'>
+      <Link href='https://manasas.dev/' text='本館' />
+      <Link href='https://novel.manasas.dev/' text='小説館' />
+    </div>
+
+    <ImageList list={azarashiList} title='あざらし' />
+    <ImageList list={otherList} title='その他' />
+    <ImageList list={fediverseList} title='Fediverse' />
+  </main>
+</Layout>
 
 <script>
   // 画像をクリックすると拡大するようにする
@@ -48,27 +68,6 @@ const other = otherList
     })
   })
 </script>
-
-<Layout title='北極の らくがき倉庫'>
-  <main>
-    <header>
-      <h1>
-        <Image
-          src={headerImage}
-          alt='北極の らくがき倉庫'
-          class='headerImage'
-        />
-      </h1>
-    </header>
-    <div class='buttonArea'>
-      <Link href='https://manasas.dev/' text='本館' />
-      <Link href='https://novel.manasas.dev/' text='小説館' />
-    </div>
-
-    <ImageList list={azarashi} title='あざらし' />
-    <ImageList list={other} title='その他' />
-  </main>
-</Layout>
 
 <style lang='scss'>
   main {

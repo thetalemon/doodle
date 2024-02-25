@@ -33,21 +33,19 @@ const calcWidthAndHeight = (image: ImageMetadata) => {
   }
 }
 
-const mappedItems = list
-  .map((item) => {
-    const wh = calcWidthAndHeight(item.image)
+const mappedItems = list.map((item) => {
+  const wh = calcWidthAndHeight(item.image)
 
-    return {
-      image: {
-        src: item.image.src,
-        width: wh.width,
-        height: wh.height,
-        format: item.image.format,
-      } as ImageMetadata,
-      alt: item.alt,
-    }
-  })
-  .reverse()
+  return {
+    image: {
+      src: item.image.src,
+      width: wh.width,
+      height: wh.height,
+      format: item.image.format,
+    } as ImageMetadata,
+    alt: item.alt,
+  }
+})
 ---
 
 <h2>{title}</h2>
