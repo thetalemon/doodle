@@ -1,26 +1,42 @@
 ---
+import { Image, Picture } from "astro:assets";
+import headerImage from "../images/header.png";
+
 interface Props {
-  title: string
+  title: string;
 }
 
-const { title } = Astro.props
+const { title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang='ja'>
+<html lang="ja">
   <head>
-    <meta charset='UTF-8' />
-    <meta name='description' content='まなさすのらくがき倉庫' />
-    <meta name='viewport' content='width=device-width' />
-    <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
-    <meta name='generator' content={Astro.generator} />
+    <meta charset="UTF-8" />
+    <meta name="description" content="まなさすのらくがき倉庫" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
   <body>
+    <header>
+      <h1>
+        <Image
+          src={headerImage}
+          alt="北極の らくがき倉庫"
+          class="headerImage"
+        />
+      </h1>
+    </header>
     <slot />
+    <footer>
+      <a href="https://manasas.dev/" rel="me">© 2024 manasas</a>
+    </footer>
   </body>
 </html>
-<style is:global>
+
+<style is:global lang="scss">
   :root {
     --accent: 136, 58, 234;
     --accent-light: 224, 204, 250;
@@ -37,9 +53,17 @@ const { title } = Astro.props
     background: #41413f;
     background-size: 224px;
     caret-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
   }
   body {
     margin: 0;
+    width: 900px;
+    max-width: calc(100% - 40px * 2);
+    padding: 0 40px;
+    background: #0f0f0e;
   }
   body::-webkit-scrollbar {
     display: none;
@@ -61,5 +85,28 @@ const { title } = Astro.props
   ul {
     list-style: none;
     padding: 0;
+  }
+  header {
+    display: flex;
+    justify-content: center;
+    h1 {
+      margin: 0;
+      width: fit-content;
+      img {
+        margin: 0 auto;
+        margin-bottom: 16px;
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+  footer {
+    width: 100%;
+    text-align: center;
+    padding: 24px 0;
+    a {
+      color: white;
+      text-decoration: none;
+    }
   }
 </style>

@@ -1,80 +1,51 @@
 ---
-import Layout from '../layouts/Layout.astro'
-import ImageList from '../components/ImageList.astro'
-import Link from '../components/Link.astro'
-import { Image } from 'astro:assets'
-import headerImage from '../images/header.png'
-import { azarashiList } from '../images/azarashi/list.ts'
-import { fediverseList } from '../images/fedi/list.ts'
-import { otherList } from '../images/other/list.ts'
+import Layout from "../layouts/Layout.astro";
+import ImageList from "../components/ImageList.astro";
+import Link from "../components/Link.astro";
+import { azarashiList } from "../images/azarashi/list.ts";
+import { fediverseList } from "../images/fedi/list.ts";
+import { otherList } from "../images/other/list.ts";
 ---
 
-<Layout title='北極の らくがき倉庫'>
+<Layout title="北極の らくがき倉庫">
   <main>
-    <header>
-      <h1>
-        <Image
-          src={headerImage}
-          alt='北極の らくがき倉庫'
-          class='headerImage'
-        />
-      </h1>
-    </header>
-    <div class='buttonArea'>
-      <Link href='https://manasas.dev/' text='本館' />
-      <Link href='https://novel.manasas.dev/' text='小説館' />
+    <div class="buttonArea">
+      <Link href="https://manasas.dev/" text="本館" />
+      <Link href="https://novel.manasas.dev/" text="小説館" />
     </div>
 
-    <ImageList list={azarashiList} title='あざらし' />
-    <ImageList list={otherList} title='その他' />
-    <ImageList list={fediverseList} title='Fediverse' />
+    <ImageList list={azarashiList} title="あざらし" />
+    <ImageList list={otherList} title="その他" />
+    <ImageList list={fediverseList} title="Fediverse" />
   </main>
 </Layout>
 
 <script>
-  // 画像をクリックすると拡大するようにする
-  const images = document.querySelectorAll('.js-content')
+  const images = document.querySelectorAll(".js-content");
   images.forEach((image) => {
-    image.addEventListener('click', () => {
-      const src = image.getAttribute('src') as string
-      const div = document.createElement('div')
-      div.style.position = 'fixed'
-      div.style.top = '0'
-      div.style.left = '0'
-      div.style.width = '100%'
-      div.style.height = '100%'
-      div.style.backgroundColor = 'rgba(0, 0, 0, 0.8)'
-      div.style.zIndex = '1000'
-      div.style.cursor = 'zoom-out'
-      document.body.style.overflow = 'hidden'
+    image.addEventListener("click", () => {
+      const div = document.createElement("div");
+      div.classList.add("js-image-modal");
 
-      const img = document.createElement('img')
-      img.src = src
-      img.style.position = 'fixed'
-      img.style.top = '50%'
-      img.style.left = '50%'
-      img.style.transform = 'translate(-50%, -50%)'
-      img.style.maxWidth = '80%'
-      img.style.maxHeight = '80%'
-      img.style.objectFit = 'contain'
+      const img = document.createElement("img");
+      img.src = image.getAttribute("src") as string;
+      img.classList.add("js-image-in-modal");
 
-      div.appendChild(img)
-      document.body.appendChild(div)
+      document.body.style.overflow = "hidden";
+      div.appendChild(img);
+      document.body.appendChild(div);
 
-      div.addEventListener('click', () => {
-        div.remove()
-        document.body.style.overflow = 'scroll'
-      })
-    })
-  })
+      div.addEventListener("click", () => {
+        div.remove();
+        document.body.style.overflow = "scroll";
+      });
+    });
+  });
 </script>
 
-<style lang='scss'>
+<style lang="scss">
   main {
-    margin: auto;
-    padding: 0 1rem;
-    width: 900px;
-    max-width: calc(100% - 2rem);
+    width: 100%;
     color: white;
     font-size: 20px;
     line-height: 1.6;
@@ -84,23 +55,32 @@ import { otherList } from '../images/other/list.ts'
     background: #0f0f0e;
   }
 
-  header {
-    display: flex;
-    justify-content: center;
-    h1 {
-      margin: 0;
-      width: fit-content;
-      image {
-        margin: 0 auto;
-        margin-bottom: 16px;
-      }
-    }
-  }
-
   .buttonArea {
     display: flex;
     justify-content: center;
     gap: 40px;
     padding: 16px 0;
+  }
+</style>
+
+<style is:global lang="scss">
+  .js-image-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    cursor: zoom-out;
+    .js-image-in-modal {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      max-width: 80%;
+      max-height: 80%;
+      object-fit: contain;
+    }
   }
 </style>

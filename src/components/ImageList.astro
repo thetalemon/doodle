@@ -54,21 +54,31 @@ const mappedItems = list.map((item) => {
     mappedItems.map((item) => (
       <li>
         <Image src={item.image} alt={item.alt} class='js-content' />
+        <div class='alt'>{item.alt}</div>
       </li>
     ))
   }
 </ul>
 
-<style>
+<style lang='scss'>
+  h2 {
+    margin-left: 1rem;
+  }
   ul {
     display: grid;
     grid-template-columns: repeat(auto-fill, 300px);
-    row-gap: 20px;
+    row-gap: 32px;
     justify-content: center;
   }
   li {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    .alt {
+      padding-top: 0.5rem;
+      text-align: center;
+      width: 280px;
+    }
   }
 </style>
