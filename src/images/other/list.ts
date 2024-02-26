@@ -1,8 +1,8 @@
-import Image202201 from './202201.png'
-import Image202202 from './202202.png'
-import Image202203 from './202203.png'
-import Image202204 from './202204.png'
-import Image202301 from './202301.png'
+import Image202201 from './2022/1.png'
+import Image202202 from './2022/2.png'
+import Image202203 from './2022/3.png'
+import Image202204 from './2022/4.png'
+import Image202301 from './2023/1.png'
 
 export const otherList = [
   {
@@ -10,19 +10,19 @@ export const otherList = [
     alt: 'Fediverse来た時の自己紹介イラスト',
   },
   {
-    image: Image202204,
+    image: Image202201,
     alt: 'インナーカラーオレンジのメッセンジャーバッグを持った子',
   },
   {
-    image: Image202203,
+    image: Image202202,
     alt: '緑の髪の制服の子',
   },
   {
-    image: Image202202,
+    image: Image202203,
     alt: 'ピンクの髪の花飾りの子',
   },
   {
-    image: Image202201,
+    image: Image202204,
     alt: '紫の髪のウインクした子',
   },
 ]
