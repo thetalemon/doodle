@@ -1,40 +1,40 @@
 ---
-import { Image } from "astro:assets";
-import type { ImageListItem } from "../type/images";
+import { Image } from 'astro:assets'
+import type { ImageListItem } from '../type/images'
 
 interface Props {
-  list: ImageListItem[];
-  title: string;
+  list: ImageListItem[]
+  title: string
 }
 
-const { list, title } = Astro.props;
+const { list, title } = Astro.props
 
-const ITEM_BOX_SIZE = 280;
+const ITEM_BOX_SIZE = 280
 
 const calcWidthAndHeight = (image: ImageMetadata) => {
-  const width = Number(image.width);
-  const height = Number(image.height);
+  const width = Number(image.width)
+  const height = Number(image.height)
   if (width > height) {
-    const ratio = ITEM_BOX_SIZE / width;
-    const calcedWidth = width > ITEM_BOX_SIZE ? ITEM_BOX_SIZE : width;
-    const calcedHeight = height * ratio;
+    const ratio = ITEM_BOX_SIZE / width
+    const calcedWidth = width > ITEM_BOX_SIZE ? ITEM_BOX_SIZE : width
+    const calcedHeight = height * ratio
     return {
       width: calcedWidth,
       height: calcedHeight,
-    };
+    }
   } else {
-    const ratio = ITEM_BOX_SIZE / height;
-    const calcedWidth = width * ratio;
-    const calcedHeight = height > ITEM_BOX_SIZE ? ITEM_BOX_SIZE : height;
+    const ratio = ITEM_BOX_SIZE / height
+    const calcedWidth = width * ratio
+    const calcedHeight = height > ITEM_BOX_SIZE ? ITEM_BOX_SIZE : height
     return {
       width: calcedWidth,
       height: calcedHeight,
-    };
+    }
   }
-};
+}
 
 const mappedItems = list.map((item) => {
-  const wh = calcWidthAndHeight(item.image);
+  const wh = calcWidthAndHeight(item.image)
 
   return {
     image: {
@@ -44,8 +44,8 @@ const mappedItems = list.map((item) => {
       format: item.image.format,
     } as ImageMetadata,
     alt: item.alt,
-  };
-});
+  }
+})
 ---
 
 <h2>{title}</h2>

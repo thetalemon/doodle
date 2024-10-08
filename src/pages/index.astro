@@ -1,10 +1,10 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import ImageList from "../components/ImageList.astro";
-import Link from "../components/Link.astro";
-import { azarashiList } from "../images/azarashi/list.ts";
-import { fediverseList } from "../images/fedi/list.ts";
-import { otherList } from "../images/other/list.ts";
+import Layout from '../layouts/Layout.astro'
+import ImageList from '../components/ImageList.astro'
+import Link from '../components/Link.astro'
+import { azarashiList } from '../images/azarashi/list.ts'
+import { fediverseList } from '../images/fedi/list.ts'
+import { otherList } from '../images/other/list.ts'
 ---
 
 <Layout title="北極の らくがき倉庫">
@@ -21,26 +21,26 @@ import { otherList } from "../images/other/list.ts";
 </Layout>
 
 <script>
-  const images = document.querySelectorAll(".js-content");
+  const images = document.querySelectorAll('.js-content')
   images.forEach((image) => {
-    image.addEventListener("click", () => {
-      const div = document.createElement("div");
-      div.classList.add("js-image-modal");
+    image.addEventListener('click', () => {
+      const div = document.createElement('div')
+      div.classList.add('js-image-modal')
 
-      const img = document.createElement("img");
-      img.src = image.getAttribute("src") as string;
-      img.classList.add("js-image-in-modal");
+      const img = document.createElement('img')
+      img.src = image.getAttribute('src') as string
+      img.classList.add('js-image-in-modal')
 
-      document.body.style.overflow = "hidden";
-      div.appendChild(img);
-      document.body.appendChild(div);
+      document.body.style.overflow = 'hidden'
+      div.appendChild(img)
+      document.body.appendChild(div)
 
-      div.addEventListener("click", () => {
-        div.remove();
-        document.body.style.overflow = "scroll";
-      });
-    });
-  });
+      div.addEventListener('click', () => {
+        div.remove()
+        document.body.style.overflow = 'scroll'
+      })
+    })
+  })
 </script>
 
 <style lang="scss">
