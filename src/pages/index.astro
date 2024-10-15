@@ -1,7 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro'
 import ImageList from '../components/ImageList.astro'
-import Link from '../components/Link.astro'
 import { azarashiList } from '../images/azarashi/list.ts'
 import { fediverseList } from '../images/fedi/list.ts'
 import { otherList } from '../images/other/list.ts'
@@ -9,11 +8,6 @@ import { otherList } from '../images/other/list.ts'
 
 <Layout title="北極の らくがき倉庫">
   <main>
-    <div class="buttonArea">
-      <Link href="https://manasas.dev/" text="本館" />
-      <Link href="https://novel.manasas.dev/" text="小説館" />
-    </div>
-
     <ImageList list={azarashiList} title="あざらし" />
     <ImageList list={otherList} title="その他" />
     <ImageList list={fediverseList} title="Fediverse" />
@@ -45,20 +39,15 @@ import { otherList } from '../images/other/list.ts'
 
 <style lang="scss">
   main {
-    width: 100%;
-    color: rgb(255, 255, 255);
-    font-size: 20px;
-    line-height: 1.6;
+    width: 900px;
+    max-width: calc(100% - 40px * 2);
+    margin: 0 auto;
+    padding: 0 40px;
+    background: #fff;
+    color: #c4427a;
     display: flex;
     flex-direction: column;
     justify-content: center;
-  }
-
-  .buttonArea {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    padding: 16px 0;
   }
 </style>
 
@@ -69,7 +58,7 @@ import { otherList } from '../images/other/list.ts'
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.8);
     z-index: 1000;
     cursor: zoom-out;
     .js-image-in-modal {
