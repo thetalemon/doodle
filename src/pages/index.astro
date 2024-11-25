@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro'
 import ImageList from '../components/ImageList.astro'
+import History from '../components/feature/History.astro'
 import { azarashiList } from '../images/azarashi/list.ts'
 import { fediverseList } from '../images/fedi/list.ts'
 import { otherList } from '../images/other/list.ts'
@@ -8,10 +9,7 @@ import { otherList } from '../images/other/list.ts'
 
 <Layout title="北極の らくがき倉庫">
   <main>
-    <div>
-      <p>2024/11/18: その他の過去絵 3点追加</p>
-      <p>2024/11/17: その他の過去絵 5点追加</p>
-    </div>
+    <History />
     <ImageList list={azarashiList} title="あざらし" />
     <ImageList list={otherList} title="その他" />
     <ImageList list={fediverseList} title="Fediverse" />
