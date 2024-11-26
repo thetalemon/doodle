@@ -6,9 +6,10 @@ import ImgNew from './new.svg'
 interface Props {
   list: ImageListItem[]
   title: string
+  id?: string
 }
 
-const { list, title } = Astro.props
+const { list, title, id } = Astro.props
 
 const ITEM_BOX_SIZE = 280
 
@@ -50,7 +51,7 @@ const mappedItems = list.map((item) => {
 })
 ---
 
-<h2>{title}</h2>
+<h2 id={id}>{title}</h2>
 <ul>
   {
     mappedItems.map((item) => (

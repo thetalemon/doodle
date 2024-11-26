@@ -1,0 +1,34 @@
+<script>
+  const anchors = document.querySelectorAll('a[href^="#"]')
+  anchors.forEach((anchor) => {
+    anchor.addEventListener('click', (event) => {
+      event.preventDefault()
+      const href = anchor.getAttribute('href')
+      scrollToAnchor(href)
+    })
+  })
+  console.log('aaa')
+  function scrollToAnchor(anchor: string | null) {
+    if (!anchor) return
+    const target = document.querySelector(anchor)
+    if (!target) return
+    target.scrollIntoView({ behavior: 'smooth' })
+  }
+</script>
+
+<ul>
+  <li><a href="#seals">あざらし</a></li>
+  <li><a href="#other">その他</a></li>
+  <li><a href="#fedi">Fediverse</a></li>
+</ul>
+
+<style lang="scss">
+  li {
+    margin-bottom: 4px;
+    display: flex;
+    &::before {
+      display: block;
+      margin-right: 12px;
+    }
+  }
+</style>
