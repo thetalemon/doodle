@@ -15,6 +15,7 @@ import { otherList } from '../images/other/list.ts'
     <ImageList list={azarashiList} title="あざらし" id="seals" />
     <ImageList list={otherList} title="その他" id="other" />
     <ImageList list={fediverseList} title="Fediverse" id="fedi" />
+    <div class="gotop js-gotop">↑</div>
   </main>
 </Layout>
 
@@ -39,6 +40,20 @@ import { otherList } from '../images/other/list.ts'
       })
     })
   })
+  const gotop = document.querySelector('.js-gotop')
+  if (gotop) {
+    window.addEventListener('scroll', () => {
+      console.log(window.scrollY)
+      if (window.scrollY > 100) {
+        gotop.classList.remove('hidden')
+      } else {
+        gotop.classList.add('hidden')
+      }
+    })
+    gotop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    })
+  }
 </script>
 
 <style lang="scss">
@@ -52,6 +67,21 @@ import { otherList } from '../images/other/list.ts'
     display: flex;
     flex-direction: column;
     justify-content: center;
+  }
+  .gotop {
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+    background: #c4427a;
+    color: #fff;
+    padding: 12px 4px 4px 12px;
+    cursor: pointer;
+    border-radius: 20px 0 0;
+    transition: right 0.3s;
+    &.hidden {
+      // display: none;
+      right: -50px;
+    }
   }
 </style>
 
