@@ -15,19 +15,23 @@
   }
 </script>
 
+<h2>カテゴリ</h2>
 <ul>
-  <li><a href="#seals">あざらし</a></li>
-  <li><a href="#other">その他</a></li>
-  <li><a href="#fedi">Fediverse</a></li>
+  <li><a href="/seal">あざらし</a></li>
+  <li><a href="/other">その他</a></li>
+  <li><a href="/fedi">Fediverse</a></li>
 </ul>
 
 <style lang="scss">
-  li {
-    margin-bottom: 4px;
+  ul {
     display: flex;
-    &::before {
-      display: block;
-      margin-right: 12px;
+    column-gap: 24px;
+    li {
+      margin-bottom: 4px;
+      &::before {
+        display: block;
+        margin-right: 12px;
+      }
     }
   }
 </style>

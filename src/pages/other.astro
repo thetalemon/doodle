@@ -1,12 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro'
-import History from '../components/feature/History.astro'
+import ImageList from '../components/ImageList.astro'
 import TableOfContents from '../components/feature/TableOfContents.astro'
+import { otherList } from '../images/other/list.ts'
 ---
 
 <Layout title="北極の らくがき倉庫">
-  <History />
   <TableOfContents />
+  <ImageList list={otherList} title="その他" id="other" />
   <div class="gotop js-gotop">↑</div>
 </Layout>
 
@@ -56,6 +57,17 @@ import TableOfContents from '../components/feature/TableOfContents.astro'
 </script>
 
 <style lang="scss">
+  main {
+    width: 900px;
+    max-width: calc(100% - 40px * 2);
+    margin: 0 auto;
+    padding: 0 40px;
+    background: #fff;
+    color: #c4427a;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
   .gotop {
     position: fixed;
     bottom: 0px;
