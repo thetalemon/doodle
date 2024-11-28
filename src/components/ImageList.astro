@@ -74,8 +74,9 @@ const mappedItems = list.map((item) => {
 <style lang="scss">
   ul {
     display: grid;
-    grid-template-columns: repeat(auto-fill, 300px);
-    row-gap: 32px;
+    grid-template-columns: repeat(auto-fill, 280px);
+    column-gap: 16px;
+    row-gap: 24px;
     justify-content: center;
   }
   li {
@@ -85,14 +86,14 @@ const mappedItems = list.map((item) => {
     flex-direction: column;
     .mainImage {
       border: 2px solid rgba(196, 66, 122, 0.2);
-      width: 90%;
+      width: 100%;
       height: auto;
     }
     .alt {
       padding-top: 8px;
       text-align: center;
       width: 280px;
-      height: 2.2rem;
+      height: 3rem;
     }
     .new {
       padding-top: 8px;
