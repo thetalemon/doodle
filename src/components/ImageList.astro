@@ -61,6 +61,7 @@ const mappedItems = list.map((item) => {
           alt=""
           class="js-content mainImage"
           loading="lazy"
+          widths={[300, 600]}
           sizes={`(max-width: ${ITEM_BOX_SIZE}px) 100vw, ${ITEM_BOX_SIZE}px`}
         />
         {item.new && <Image class="new" src={ImgNew} alt="new" width={40} />}
