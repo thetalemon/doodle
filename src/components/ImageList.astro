@@ -58,7 +58,7 @@ const mappedItems = list.map((item) => {
       <li>
         <Image
           src={item.image}
-          alt={item.alt}
+          alt=""
           class="js-content mainImage"
           loading="lazy"
         />
@@ -83,6 +83,8 @@ const mappedItems = list.map((item) => {
     flex-direction: column;
     .mainImage {
       border: 2px solid rgba(196, 66, 122, 0.2);
+      width: 90%;
+      height: auto;
     }
     .alt {
       padding-top: 8px;
