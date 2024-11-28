@@ -43,7 +43,6 @@ import { otherList } from '../images/other/list.ts'
   const gotop = document.querySelector('.js-gotop')
   if (gotop) {
     window.addEventListener('scroll', () => {
-      console.log(window.scrollY)
       if (window.scrollY > 100) {
         gotop.classList.remove('hidden')
       } else {
