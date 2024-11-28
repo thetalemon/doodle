@@ -11,7 +11,7 @@ interface Props {
 
 const { list, title, id } = Astro.props
 
-const ITEM_BOX_SIZE = 280
+const ITEM_BOX_SIZE = 100
 
 const calcWidthAndHeight = (image: ImageMetadata) => {
   const width = Number(image.width)
@@ -58,14 +58,13 @@ const mappedItems = list.map((item) => {
       <li>
         <Image
           src={item.image}
-          alt=""
+          alt={item.alt}
           class="js-content mainImage"
           loading="lazy"
-          widths={[270]}
-          sizes={`270px`}
+          widths={[100]}
+          sizes={`100px`}
         />
         {item.new && <Image class="new" src={ImgNew} alt="new" width={40} />}
-        <div class="alt">{item.alt}</div>
       </li>
     ))
   }
@@ -74,20 +73,22 @@ const mappedItems = list.map((item) => {
 <style lang="scss">
   ul {
     display: grid;
-    grid-template-columns: repeat(auto-fill, 280px);
+    grid-template-columns: repeat(auto-fill, 100px);
     column-gap: 16px;
     row-gap: 24px;
     justify-content: center;
   }
   li {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     flex-direction: column;
     .mainImage {
       border: 2px solid rgba(196, 66, 122, 0.2);
-      width: 100%;
-      height: auto;
+      height: 100px;
+      width: 100px;
+      object-fit: cover;
+      aspect-ratio: 1/1;
     }
     .alt {
       padding-top: 8px;
