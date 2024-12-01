@@ -1,0 +1,34 @@
+<div class="gotop js-gotop hidden">↑</div>
+
+<style lang="scss">
+  .gotop {
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+    background: #c4427a;
+    color: #fff;
+    padding: 12px 4px 4px 12px;
+    cursor: pointer;
+    border-radius: 20px 0 0;
+    transition: right 0.3s;
+    &.hidden {
+      right: -50px;
+    }
+  }
+</style>
+
+<script>
+  const gotop = document.querySelector('.js-gotop')
+  if (gotop) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        gotop.classList.remove('hidden')
+      } else {
+        gotop.classList.add('hidden')
+      }
+    })
+    gotop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    })
+  }
+</script>

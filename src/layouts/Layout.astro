@@ -1,7 +1,7 @@
 ---
-import { Image } from 'astro:assets'
-import headerSvg from '../images/header.svg'
-import Link from '../components/Link.astro'
+import Header from '@/components/layout/Header.astro'
+import Footer from '@/components/layout/Footer.astro'
+import GoTop from '@/components/GoTop.astro'
 
 interface Props {
   title: string
@@ -29,28 +29,12 @@ const { title } = Astro.props
     <title>{title}</title>
   </head>
   <body>
-    <header>
-      <h1>
-        <a href="/">
-          <Image
-            src={headerSvg}
-            alt="北極の らくがき倉庫"
-            loading="eager"
-            decoding="sync"
-          />
-        </a>
-      </h1>
-      <div class="buttonArea">
-        <Link href="https://manasas.dev/" text="本館" />
-        <Link href="https://novel.manasas.dev/" text="小説館" />
-      </div>
-    </header>
+    <Header />
     <main>
       <slot />
+      <GoTop />
     </main>
-    <footer>
-      <a href="https://manasas.dev/" rel="me">© 2024 manasas</a>
-    </footer>
+    <Footer />
   </body>
 </html>
 
@@ -84,20 +68,6 @@ const { title } = Astro.props
       })
     })
   })
-
-  const gotop = document.querySelector('.js-gotop')
-  if (gotop) {
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 100) {
-        gotop.classList.remove('hidden')
-      } else {
-        gotop.classList.add('hidden')
-      }
-    })
-    gotop.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' })
-    })
-  }
 </script>
 
 <style lang="scss">
@@ -122,14 +92,9 @@ const { title } = Astro.props
       padding: 0 16px;
     }
   }
-</style>
-
-<style is:global lang="scss">
   html {
     font-family: system-ui, sans-serif;
     background: #ff94c2;
-    background-size: 224px;
-    caret-color: transparent;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -141,6 +106,9 @@ const { title } = Astro.props
     margin: 0;
     width: 100%;
   }
+</style>
+
+<style is:global lang="scss">
   h2 {
     margin: 24px 0 0 0;
   }
@@ -148,44 +116,8 @@ const { title } = Astro.props
     list-style: none;
     padding: 0;
   }
-  header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    h1 {
-      margin: 0;
-      width: fit-content;
-      img {
-        margin: 1rem 0;
-        width: 100%;
-        height: auto;
-      }
-    }
-    .buttonArea {
-      display: flex;
-      justify-content: center;
-      gap: 40px;
-      margin-bottom: 1.5rem;
-    }
-  }
-  footer {
-    margin-top: 64px;
-    font-size: 0.8rem;
-    width: 100%;
-    text-align: center;
-    background-color: #c4427a;
-    a {
-      color: #fff;
-      text-decoration: none;
-    }
-    @media screen and (max-width: 900px) {
-      margin-top: 0;
-    }
-  }
   a {
     color: #990033;
-    text-decoration: underline;
     &:hover {
       opacity: 0.5;
     }
@@ -223,20 +155,6 @@ const { title } = Astro.props
         color: white;
         text-align: center;
       }
-    }
-  }
-  .gotop {
-    position: fixed;
-    bottom: 0px;
-    right: 0px;
-    background: #c4427a;
-    color: #fff;
-    padding: 12px 4px 4px 12px;
-    cursor: pointer;
-    border-radius: 20px 0 0;
-    transition: right 0.3s;
-    &.hidden {
-      right: -50px;
     }
   }
 </style>

@@ -1,0 +1,46 @@
+---
+import { Image } from 'astro:assets'
+import headerSvg from '@/images/header.svg'
+import Link from '@/components/Link.astro'
+---
+
+<header>
+  <h1>
+    <a href="/">
+      <Image
+        src={headerSvg}
+        alt="北極の らくがき倉庫"
+        loading="eager"
+        decoding="sync"
+      />
+    </a>
+  </h1>
+  <div class="buttonArea">
+    <Link href="https://manasas.dev/" text="本館" />
+    <Link href="https://novel.manasas.dev/" text="小説館" />
+  </div>
+</header>
+
+<style lang="scss">
+  header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    h1 {
+      margin: 0;
+      width: fit-content;
+      img {
+        margin: 1rem 0;
+        width: 100%;
+        height: auto;
+      }
+    }
+    .buttonArea {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 1.5rem;
+    }
+  }
+</style>
