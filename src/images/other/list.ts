@@ -4,6 +4,7 @@ import Image202403 from './2024/3.png'
 import Image202404 from './2024/4.png'
 import Image202405 from './2024/5.png'
 import Image202301 from './2023/1.png'
+import Image202302 from './2023/2.png'
 import Image202201 from './2022/1.png'
 import Image202202 from './2022/2.png'
 import Image202203 from './2022/3.png'
@@ -36,6 +37,11 @@ export const otherList = [
   {
     image: Image202405,
     alt: '黒髪赤服の子',
+  },
+  {
+    image: Image202302,
+    alt: '銀髪褐色肌',
+    new: true,
   },
   {
     image: Image202301,
