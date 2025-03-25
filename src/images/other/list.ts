@@ -32,12 +32,10 @@ export const otherList = [
   {
     image: Image202404,
     alt: '褐色肌いいよね',
-    new: true,
   },
   {
     image: Image202405,
     alt: '黒髪赤服の子',
-    new: true,
   },
   {
     image: Image202301,
@@ -82,11 +80,9 @@ export const otherList = [
   {
     image: ImageOld06,
     alt: '紫の子',
-    new: true,
   },
   {
     image: ImageOld07,
     alt: '緑とピンクの子',
-    new: true,
   },
 ]
